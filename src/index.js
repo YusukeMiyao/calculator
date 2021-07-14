@@ -1,12 +1,12 @@
 import React from "react"
 import ReactDOM from "react-dom"
-import App from "./App"
+import { Template } from "./components/Template"
 import { ContextProvider } from "./components/Context"
 
 ReactDOM.render(
   <React.StrictMode>
     <ContextProvider>
-      <App />
+      <Template />
     </ContextProvider>
   </React.StrictMode>,
   document.getElementById("root")

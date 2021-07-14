@@ -1,168 +1,50 @@
-import React, { useContext } from "react"
+import React from "react"
 import styled from "styled-components"
 import {
   ALL_CLEAR,
   CLEAR,
   DECIMAL_POINT,
   EQUAL,
-  INPUT_NUM,
   ONE_HUNDREDTH,
   OPERATER,
   POSI_AND_NEGA,
 } from "../utils/constant"
 import { useSetContext } from "./Context"
+import { NumButton } from "./NumButton"
+import { OperaterButton } from "./OperaterButton"
+import { OptionButton } from "./OptionButton"
 
 export const Template = () => {
   const context = useSetContext()
   const state = context.state
-  const dispatch = context.dispatch
 
   return (
     <Wrapper>
-      <NumButton
-        onClick={() =>
-          dispatch({
-            type: INPUT_NUM,
-            inputNum: "0",
-          })
-        }
-      >
-        0
-      </NumButton>
-      <NumButton
-        onClick={() =>
-          dispatch({
-            type: INPUT_NUM,
-            inputNum: "1",
-          })
-        }
-      >
-        1
-      </NumButton>
-      <NumButton
-        onClick={() =>
-          dispatch({
-            type: INPUT_NUM,
-            inputNum: "2",
-          })
-        }
-      >
-        2
-      </NumButton>
-      <NumButton
-        onClick={() =>
-          dispatch({
-            type: INPUT_NUM,
-            inputNum: "3",
-          })
-        }
-      >
-        3
-      </NumButton>
-      <NumButton
-        onClick={() =>
-          dispatch({
-            type: INPUT_NUM,
-            inputNum: "4",
-          })
-        }
-      >
-        4
-      </NumButton>
-      <NumButton
-        onClick={() =>
-          dispatch({
-            type: INPUT_NUM,
-            inputNum: "5",
-          })
-        }
-      >
-        5
-      </NumButton>
-      <NumButton
-        onClick={() =>
-          dispatch({
-            type: INPUT_NUM,
-            inputNum: "6",
-          })
-        }
-      >
-        6
-      </NumButton>
-      <NumButton
-        onClick={() =>
-          dispatch({
-            type: INPUT_NUM,
-            inputNum: "7",
-          })
-        }
-      >
-        7
-      </NumButton>
-      <NumButton
-        onClick={() =>
-          dispatch({
-            type: INPUT_NUM,
-            inputNum: "8",
-          })
-        }
-      >
-        8
-      </NumButton>
-      <NumButton
-        onClick={() =>
-          dispatch({
-            type: INPUT_NUM,
-            inputNum: "9",
-          })
-        }
-      >
-        9
-      </NumButton>
-      <OperatorButton onClick={() => dispatch({ type: ONE_HUNDREDTH })}>
-        %
-      </OperatorButton>
-      <OperatorButton onClick={() => dispatch({ type: POSI_AND_NEGA })}>
-        +/-
-      </OperatorButton>
-      <OperatorButton onClick={() => dispatch({ type: DECIMAL_POINT })}>
-        .
-      </OperatorButton>
-      <OperatorButton
-        onClick={() => dispatch({ type: OPERATER, operater: "÷" })}
-      >
-        ÷
-      </OperatorButton>
-      <OperatorButton
-        onClick={() => dispatch({ type: OPERATER, operater: "×" })}
-      >
-        ×
-      </OperatorButton>
-      <OperatorButton
-        onClick={() => dispatch({ type: OPERATER, operater: "-" })}
-      >
-        -
-      </OperatorButton>
-      <OperatorButton
-        onClick={() => dispatch({ type: OPERATER, operater: "+" })}
-      >
-        +
-      </OperatorButton>
-      <EqualButton onClick={() => dispatch({ type: EQUAL })}>=</EqualButton>
-      <OperatorButton onClick={() => dispatch({ type: CLEAR })}>
-        C
-      </OperatorButton>
-      <OperatorButton onClick={() => dispatch({ type: ALL_CLEAR })}>
-        AC
-      </OperatorButton>
-      <div>{state.frontNum}</div>
+      <NumButton num={"0"} />
+      <NumButton num={"1"} />
+      <NumButton num={"2"} />
+      <NumButton num={"3"} />
+      <NumButton num={"4"} />
+      <NumButton num={"5"} />
+      <NumButton num={"6"} />
+      <NumButton num={"7"} />
+      <NumButton num={"8"} />
+      <NumButton num={"9"} />
+      <OptionButton option={"%"} action={ONE_HUNDREDTH} />
+      <OptionButton option={"+/-"} action={POSI_AND_NEGA} />
+      <OptionButton option={"."} action={DECIMAL_POINT} />
+      <OperaterButton operater={"÷"} action={OPERATER} />
+      <OperaterButton operater={"×"} action={OPERATER} />
+      <OperaterButton operater={"-"} action={OPERATER} />
+      <OperaterButton operater={"+"} action={OPERATER} />
+      <OptionButton option={"="} action={EQUAL} />
+      <OptionButton option={"C"} action={CLEAR} />
+      <OptionButton option={"AC"} action={ALL_CLEAR} />
+      <div>{state.numInFront}</div>
       <div>{state.operater}</div>
-      <div>{state.backNum}</div>
+      <div>{state.numInBack}</div>
     </Wrapper>
   )
 }
 
 const Wrapper = styled.div``
-const NumButton = styled.button``
-const OperatorButton = styled.button``
-const EqualButton = styled.button``
