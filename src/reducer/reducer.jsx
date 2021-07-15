@@ -26,7 +26,7 @@ export const Reducer = (state, action) => {
         : { ...state, numInBack: numInBack + inputNum }
 
     case OPERATER:
-      return numInFront.slice(-1) !== "."
+      return numInFront.slice(-1) !== "." && operater === ""
         ? { ...state, operater: action.operater }
         : { ...state }
 
@@ -79,13 +79,13 @@ export const Reducer = (state, action) => {
       } else if (operater !== "" && numInBack === null) {
         return { ...state, operater: "" }
       } else if (numInBack !== null) {
-        let setnumInBack
+        let setNumInBack
         if (numInBack.length === 1) {
-          setnumInBack = null
+          setNumInBack = null
         } else {
-          setnumInBack = numInBack.slice(0, -1)
+          setNumInBack = numInBack.slice(0, -1)
         }
-        return { ...state, numInBack: setnumInBack }
+        return { ...state, numInBack: setNumInBack }
       } else return { ...state }
 
     case ALL_CLEAR:
@@ -99,28 +99,28 @@ export const Reducer = (state, action) => {
       if (numInBack.slice(-1) !== ".") {
         if (numInBack !== null) {
           const setnumInFront = Number(numInFront)
-          const setnumInBack = Number(numInBack)
+          const setNumInBack = Number(numInBack)
           if (operater === "÷") {
             return {
-              numInFront: setnumInFront / setnumInBack + "",
+              numInFront: setnumInFront / setNumInBack + "",
               operater: "",
               numInBack: null,
             }
           } else if (operater === "×") {
             return {
-              numInFront: setnumInFront * setnumInBack + "",
+              numInFront: setnumInFront * setNumInBack + "",
               operater: "",
               numInBack: null,
             }
           } else if (operater === "-") {
             return {
-              numInFront: setnumInFront - setnumInBack + "",
+              numInFront: setnumInFront - setNumInBack + "",
               operater: "",
               numInBack: null,
             }
           } else if (operater === "+") {
             return {
-              numInFront: setnumInFront + setnumInBack + "",
+              numInFront: setnumInFront + setNumInBack + "",
               operater: "",
               numInBack: null,
             }
