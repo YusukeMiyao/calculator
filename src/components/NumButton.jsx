@@ -11,4 +11,13 @@ export const NumButton = ({ num }) => {
   )
 }
 
-const Button = styled.button``
+const Button = styled.button`
+  background-color: #dcdcdc;
+  border: solid 1px #cbcbcb;
+  color: #333;
+  font-size: 2em;
+  text-align: center;
+  border-radius: 8px;
+  width: 24%;
+  height: 100%;
+`

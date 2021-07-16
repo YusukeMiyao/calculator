@@ -9,4 +9,13 @@ export const OptionButton = ({ option, action }) => {
   )
 }
 
-const Button = styled.button``
+const Button = styled.button`
+  background-color: #fe9a2e;
+  border: solid 1px #ed891d;
+  color: #fff;
+  font-size: 2em;
+  text-align: center;
+  border-radius: 8px;
+  width: 24%;
+  height: 100%;
+`
