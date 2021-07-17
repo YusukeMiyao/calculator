@@ -5,7 +5,10 @@ import { INPUT_NUM } from "../utils/constant"
 const defaultState = {
   numInFront: "0",
   operater: "",
-  numInBack: null,
+  numInBack: "",
+  countNumInFront: 1,
+  countNumInBack: 0,
+  countLimit: false,
 }
 
 export const SetContext = React.createContext({})
@@ -17,7 +20,7 @@ export const ContextProvider = ({ children }) => {
     type: INPUT_NUM,
     inputNum: num,
   })
-  const value = { state, dispatch, onNumClick }
+  const value = { ...state, dispatch, onNumClick }
 
   return <SetContext.Provider value={value}>{children}</SetContext.Provider>
 }
