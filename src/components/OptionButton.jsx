@@ -2,17 +2,22 @@ import React from "react"
 import styled from "styled-components"
 import { useSetContext } from "./Context"
 
-export const OptionButton = ({ option, action }) => {
+export const OptionButton = ({ option, action, main, border }) => {
   const context = useSetContext()
   return (
-    <Button onClick={() => context.dispatch({ type: action })}>{option}</Button>
+    <Button
+      onClick={() => context.dispatch({ type: action })}
+      theme={{ main, border }}
+    >
+      {option}
+    </Button>
   )
 }
 
 const Button = styled.button`
-  background-color: #fe9a2e;
-  border: solid 1px #ed891d;
-  color: #fff;
+  background-color: ${(props) => props.theme.main};
+  border: solid 1px ${(props) => props.theme.border};
+  color: ${(props) => (props.theme.main !== "#dcdcdc" ? "#fff" : "#333")};
   font-size: 2em;
   text-align: center;
   border-radius: 8px;
